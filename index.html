@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A beautiful, modern Student Assignment Deadline Tracker. Track your courses, assignments, and due dates with smart urgency sorting and visual color-coding." />
+  <title>DeadlineFlow — Student Assignment Tracker</title>
+  <!-- Google Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header id="app-header">
+    <div class="header-left">
+      <div class="logo-icon">📋</div>
+      <div>
+        <h1>DeadlineFlow</h1>
+        <p class="tagline">Stay ahead of every assignment</p>
+      </div>
+    </div>
+    <button id="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span class="icon-sun">☀️</span>
+      <span class="icon-moon">🌙</span>
+    </button>
+  </header>
+
+  <!-- ===== MAIN CONTAINER ===== -->
+  <main id="app-main">
+
+    <!-- ===== DASHBOARD STATS ===== -->
+    <section id="dashboard" aria-label="Task statistics">
+      <div class="stat-card" id="stat-total">
+        <span class="stat-number" id="total-count">0</span>
+        <span class="stat-label">Total Tasks</span>
+      </div>
+      <div class="stat-card stat-urgent" id="stat-urgent">
+        <span class="stat-number" id="urgent-count">0</span>
+        <span class="stat-label">Due Soon / Overdue</span>
+      </div>
+      <div class="stat-card stat-upcoming" id="stat-upcoming">
+        <span class="stat-number" id="upcoming-count">0</span>
+        <span class="stat-label">Upcoming</span>
+      </div>
+    </section>
+
+    <!-- ===== ADD TASK FORM ===== -->
+    <section id="form-section" aria-label="Add a new task">
+      <h2 class="section-title">Add New Assignment</h2>
+      <form id="task-form" autocomplete="off">
+        <div class="form-group">
+          <label for="course-name">Course Name</label>
+          <input type="text" id="course-name" placeholder="e.g. Data Structures" required />
+        </div>
+        <div class="form-group">
+          <label for="task-name">Task / Assignment</label>
+          <input type="text" id="task-name" placeholder="e.g. Lab Report #3" required />
+        </div>
+        <div class="form-group">
+          <label for="due-date">Due Date</label>
+          <input type="date" id="due-date" required />
+        </div>
+        <button type="submit" id="add-task-btn">
+          <span class="btn-icon">＋</span> Add Task
+        </button>
+      </form>
+    </section>
+
+    <!-- ===== TASK LIST ===== -->
+    <section id="task-list-section" aria-label="Your assignments">
+      <h2 class="section-title">Your Assignments</h2>
+      <div id="task-list">
+        <!-- Tasks will be rendered here by JS -->
+      </div>
+      <div id="empty-state" class="empty-state hidden">
+        <div class="empty-illustration">🎉</div>
+        <p>All clear! No assignments to track.</p>
+        <span>Add one above to get started.</span>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== UNDO TOAST ===== -->
+  <div id="undo-toast" class="toast hidden" role="alert" aria-live="assertive">
+    <span class="toast-message">Task completed!</span>
+    <button id="undo-btn" class="toast-undo">Undo</button>
+    <div class="toast-progress"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
